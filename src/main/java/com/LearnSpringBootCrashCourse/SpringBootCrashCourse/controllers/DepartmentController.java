@@ -3,9 +3,12 @@ package com.LearnSpringBootCrashCourse.SpringBootCrashCourse.controllers;
 import com.LearnSpringBootCrashCourse.SpringBootCrashCourse.entity.Department;
 import com.LearnSpringBootCrashCourse.SpringBootCrashCourse.services.DepartmentService;
 import com.LearnSpringBootCrashCourse.SpringBootCrashCourse.services.DepartmentServiceImpl;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -20,11 +23,17 @@ public class DepartmentController {
     @Autowired // This is Dependency Injection // To tell spring to autowire the object to this reference
     public DepartmentService departmentService;
 
+    // Adding Logger
+    private final Logger LOGGER = LoggerFactory.getLogger(DepartmentController.class);
+
     @PostMapping("/departments") // /departments is the endpoint where we need to call the saveDepartment()
-    public Department saveDepartment(@RequestBody Department department) { // Since we use POST, we need to pass the entire request body in JSON to make it as entity
+    public Department saveDepartment(@Valid @RequestBody Department department) { // Since we use POST, we need to pass the entire request body in JSON to make it as entity // @Valid is used for the validation that we mentioned in Department class
         // @RequestBody converts JSON to object
         // Now we need to call service layer to pass this data
         // DepartmentService service = new DepartmentServiceImpl(); We use interface
+
+        // Log whenever a request comes to saveDepartment - It helps to debug the application
+        LOGGER.info("***** INSIDE saveDepartment of departmentController *****");
         return departmentService.saveDepartment(department);
     }
 
