@@ -45,7 +45,26 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 	Kill the process running on port - $ taskkill /PID port_number /F
  */
 
-// SpringBoot Actuator - It used to monitor the application when deployed in an environment like health, memory utilization, beans or objects created...etc,.
+// SpringBoot Actuator - It used to monitor the application when deployed in an environment like health, memory utilization, beans or objects created...etc,. (https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-actuator)
+// Using Actuator we get many endpoints, Run the application and go to http://localhost:8082/actuator
+/* Endpoints can be enabled or disabled based on our requirements - Go to application.yml and add the following code in any document
+	-> To expose all the available endpoints - Go to application.yml and add the following code in any document
+			management:
+			  endpoints:
+				web:
+				  exposure:
+					include: "*"
+	-> To create custom endpoints - config/FeatureEndpoint.java
+	-> To exclude the endpoints - Go to application.yml and add the following code in any document
+			management:
+			  endpoints:
+				web:
+				  exposure:
+					include: "*"
+					exclude: "env, beans" // env, beans endpoints will be excluded
+ */
+
+// SpringAdmin is used to create dashboard to monitor applications using the endpoints from SpringActuator
 
 @SpringBootApplication
 public class SpringBootCrashCourseApplication {

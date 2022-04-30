@@ -1,0 +1,70 @@
+#Either use application.yml or application.properties
+
+#Instead of application.properties we can use this .yml file which have good conventions than .properties and reusable
+#Indentaion is important
+#Use online converter to convert the contents of .properties file to .yml format
+server:
+  port: 8082
+
+#Default active profile to run
+spring:
+  profiles:
+    active: qa
+
+--- #This divides into documents
+#dev profile
+spring:
+  profiles: dev
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    username: root
+    url: jdbc:mysql://localhost:3306/SimpleSpringWebAppRESTAPI #All the respective Database must be created
+    password: password
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: 'true'
+
+myCustomWelcomeMessage:
+  message: Welcome to Spring Boot
+
+---
+#qa profile
+spring:
+  profiles: qa
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    username: root
+    url: jdbc:mysql://localhost:3306/SimpleSpringWebAppRESTAPI-qa # Create a schema SimpleSpringWebAppRESTAPI-qa in database and running the application automatically creates all the tables
+    password: password
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: 'true'
+
+myCustomWelcomeMessage:
+  message: Welcome to Spring Boot
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+        exclude: "caches, beans"
+
+---
+#prod profile
+spring:
+  profiles: prod
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    username: root
+    url: jdbc:mysql://localhost:3306/SimpleSpringWebAppRESTAPI-prod
+    password: password
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: 'true'
+
+myCustomWelcomeMessage:
+  message: Welcome to Spring Boot
