@@ -1,6 +1,7 @@
 package com.LearnSpringBootCrashCourse.SpringBootCrashCourse.services;
 
 import com.LearnSpringBootCrashCourse.SpringBootCrashCourse.entity.Department;
+import com.LearnSpringBootCrashCourse.SpringBootCrashCourse.error.DepartmentNotFoundException;
 
 import java.util.List;
 
@@ -9,7 +10,7 @@ public interface DepartmentService {
 
     public List<Department> fetchDepartmentList();
 
-    public Department fetchDepartmentByID(Long departmentID);
+    public Department fetchDepartmentByID(Long departmentID) throws DepartmentNotFoundException;
 
     public void deleteDepartmentByID(Long departmentID);
 

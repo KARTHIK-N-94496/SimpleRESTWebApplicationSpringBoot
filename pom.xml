@@ -10,7 +10,8 @@
 	</parent>
 	<groupId>com.LearnSpringBootCrashCourse</groupId>
 	<artifactId>SpringBootCrashCourse</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+<!--	<version>0.0.1-SNAPSHOT</version>-->
+	<version>1.0.0</version> <!-- Creating version 1 of the application -->
 	<name>SpringBootCrashCourse</name>
 	<description>Spring Boot Crash Course by Youtube - &quot;Daily Code Buffer&quot;</description>
 	<properties>
@@ -58,6 +59,13 @@
 			<artifactId>lombok</artifactId>
 			<version>1.18.22</version>
 			<scope>provided</scope>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java -->
+		<dependency>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+			<scope>runtime</scope>
 		</dependency>
 
 	</dependencies>

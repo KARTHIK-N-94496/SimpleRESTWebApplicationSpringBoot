@@ -1,13 +1,10 @@
 package com.LearnSpringBootCrashCourse.SpringBootCrashCourse;
 
-import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
+
+// We create test case for each of the layer that we have
 
 @SpringBootTest
 class SpringBootCrashCourseApplicationTests {
-
-	@Test
-	void contextLoads() {
-	}
-
+	// Automatically creating files - Go to the class for which you need to create test case and right click on class name and select generate
 }

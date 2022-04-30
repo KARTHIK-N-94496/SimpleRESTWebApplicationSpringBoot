@@ -1,6 +1,7 @@
 package com.LearnSpringBootCrashCourse.SpringBootCrashCourse.controllers;
 
 import com.LearnSpringBootCrashCourse.SpringBootCrashCourse.entity.Department;
+import com.LearnSpringBootCrashCourse.SpringBootCrashCourse.error.DepartmentNotFoundException;
 import com.LearnSpringBootCrashCourse.SpringBootCrashCourse.services.DepartmentService;
 import com.LearnSpringBootCrashCourse.SpringBootCrashCourse.services.DepartmentServiceImpl;
 import org.slf4j.Logger;
@@ -45,7 +46,7 @@ public class DepartmentController {
 
     // To fetch the departments using the ID
     @GetMapping("/departments/{id}") // Path variable is used to mention the ID because it is dynamic value
-    public Department fetchDepartmentByID(@PathVariable("id") Long departmentID) {
+    public Department fetchDepartmentByID(@PathVariable("id") Long departmentID) throws DepartmentNotFoundException {
         return departmentService.fetchDepartmentByID(departmentID);
     }
 
